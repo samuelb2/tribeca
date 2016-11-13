@@ -741,6 +741,7 @@ class CoinbasePositionGateway implements Interfaces.IPositionGateway {
         this._authClient.getAccounts((err?: Error, resp?: any, data?: CoinbaseAccountInformation[]) => {
             try {
                 _.forEach(data, d => {
+                    console.log(d);
                     var c = GetCurrencyEnum(d.currency);
                     var rpt = new Models.CurrencyPosition(convertPrice(d.available), convertPrice(d.hold), c);
                     this.PositionUpdate.trigger(rpt);
